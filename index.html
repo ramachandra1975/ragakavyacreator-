@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raga & Kavya Creator | Aesthetics of Society · culturalmusings.com</title>
+<style>
+  /* ── BASE ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold:   #c9a84c;
+    --gold2:  #e8c97a;
+    --dark:   #0d0d0d;
+    --panel:  #111111;
+    --card:   #161616;
+    --border: #2a2a2a;
+    --text:   #d4c9b0;
+    --muted:  #7a7065;
+    --accent: #6b3fa0;
+    --teal:   #1d9e75;
+    --serif:  'Georgia', 'Times New Roman', serif;
+    --sans:   'Segoe UI', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ── NAVBAR (matches culturalmusings.com exactly) ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #080808;
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    height: 58px;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .nav-logo img {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .nav-logo-text {
+    font-family: var(--serif);
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    list-style: none;
+    flex: 1;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .nav-links::-webkit-scrollbar { display: none; }
+
+  .nav-links li { position: relative; }
+
+  .nav-links a, .nav-links button {
+    display: block;
+    padding: 0 14px;
+    height: 58px;
+    line-height: 58px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover, .nav-links button:hover,
+  .nav-links a.active { color: var(--gold); }
+
+  .nav-links a.active {
+    border-bottom: 2px solid var(--gold);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    text-align: center;
+    padding: 5rem 2rem 3rem;
+    background: radial-gradient(ellipse 80% 50% at 50% 0%, #1a0f00 0%, var(--dark) 70%);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .om {
+    font-family: var(--serif);
+    font-size: 2.8rem;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 400;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold2);
+  }
+
+  .hero p {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 680px;
+    margin: 0 auto 2rem;
+    line-height: 1.8;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 2.5rem;
+  }
+
+  .htag {
+    padding: 5px 14px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── MAIN LAYOUT ── */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section {
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-header {
+    margin-bottom: 2rem;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--gold2);
+    margin-bottom: 0.5rem;
+  }
+
+  .section-desc {
+    font-size: 13px;
+    color: var(--muted);
+    max-width: 600px;
+  }
+
+  /* ── GENRE TABS ── */
+  .genre-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 2rem;
+  }
+
+  .genre-btn {
+    padding: 7px 16px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 12px;
+    font-family: var(--sans);
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    transition: all 0.2s;
+  }
+
+  .genre-btn:hover { color: var(--gold); border-color: var(--gold); }
+  .genre-btn.active {
+    background: var(--gold);
+    color: #000;
+    border-color: var(--gold);
+    font-weight: 600;
+  }
+
+  /* ── CREATOR GRID ── */
+  .creator-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 760px) {
+    .creator-grid { grid-template-columns: 1fr; }
+  }
+
+  .creator-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.5rem;
+  }
+
+  .creator-card.full {
+    grid-column: 1 / -1;
+  }
+
+  .card-title {
+    font-family: var(--serif);
+    font-size: 1rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    letter-spacing: 0.04em;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .card-title span { font-size: 16px; }
+
+  label {
+    display: block;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  select, input[type=text], textarea {
+    width: 100%;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text);
+    font-size: 13px;
+    font-family: var(--sans);
+    padding: 8px 10px;
+    margin-bottom: 14px;
+    transition: border-color 0.2s;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a7065' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; padding-right: 30px; }
+
+  select:focus, input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+  }
+
+  textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+
+  /* ── SWARA PICKER ── */
+  .swara-section { margin-bottom: 14px; }
+  .swara-label { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+
+  .swara-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 8px;
+  }
+
+  .sw {
+    padding: 4px 9px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    font-size: 12px;
+    color: var(--muted);
+    background: var(--panel);
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: var(--sans);
+  }
+
+  .sw:hover { border-color: var(--gold); color: var(--gold); }
+  .sw.on.aroh { background: #1a1000; border-color: var(--gold); color: var(--gold); font-weight: 600; }
+  .sw.on.avaroh { background: #001a12; border-color: var(--teal); color: var(--teal); font-weight: 600; }
+
+  .seq-display {
+    min-height: 36px;
+    padding: 6px 10px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 13px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 14px;
+  }
+
+  .seq-pill {
+    padding: 2px 7px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .seq-pill.aroh { background: #2a1f00; color: var(--gold); }
+  .seq-pill.avaroh { background: #002a1a; color: var(--teal); }
+  .seq-hint { color: var(--muted); font-size: 12px; font-style: italic; }
+
+  /* ── BUTTONS ── */
+  .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+
+  .btn-gold {
+    padding: 9px 22px;
+    background: var(--gold);
+    color: #000;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 700;
+    font-family: var(--sans);
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: background 0.2s;
+  }
+
+  .btn-gold:hover { background: var(--gold2); }
+
+  .btn-clear {
+    padding: 9px 16px;
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: var(--sans);
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .btn-clear:hover { color: var(--text); border-color: var(--muted); }
+
+  /* ── OUTPUT ── */
+  .output-section {
+    display: none;
+    margin-top: 2rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .output-section.show { display: block; }
+
+  .output-header {
+    background: #0a0800;
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .output-title {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+  }
+
+  .output-genre-tag {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+  }
+
+  .output-body { padding: 1.5rem; }
+
+  .output-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-bottom: 1.5rem;
+  }
+
+  .meta-block {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 10px 14px;
+  }
+
+  .meta-block .mk { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 3px; }
+  .meta-block .mv { font-size: 14px; font-weight: 500; color: var(--text); }
+
+  .output-row { margin-bottom: 1.2rem; }
+  .out-label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 5px;
+  }
+
+  .scale-display {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--gold2);
+    letter-spacing: 0.08em;
+    line-height: 1.8;
+  }
+
+  .scale-display.avaroh { color: var(--teal); }
+
+  .kavya-output {
+    font-family: var(--serif);
+    font-size: 1rem;
+    line-height: 2;
+    color: var(--text);
+    white-space: pre-wrap;
+    border-left: 2px solid var(--gold);
+    padding-left: 1.2rem;
+    font-style: italic;
+  }
+
+  .pill-row { display: flex; flex-wrap: wrap; gap: 5px; }
+
+  .info-pill {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .p-gold { background: #1a1200; color: var(--gold); border: 1px solid #3a2a00; }
+  .p-teal { background: #001a12; color: var(--teal); border: 1px solid #003322; }
+  .p-purple { background: #120a20; color: #a07ae0; border: 1px solid #2a1a50; }
+  .p-muted { background: var(--panel); color: var(--muted); border: 1px solid var(--border); }
+
+  /* ── REFERENCE PANEL ── */
+  .ref-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+  }
+
+  .ref-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1rem;
+    transition: border-color 0.2s;
+  }
+
+  .ref-card:hover { border-color: var(--gold); }
+  .ref-card a { text-decoration: none; color: inherit; }
+
+  .ref-card .rt {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+
+  .ref-card .rd {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .ref-card .rl {
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 8px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  footer a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════ NAVBAR ════════════════════ -->
+<nav>
+  <a href="https://www.culturalmusings.com" class="nav-logo">
+    <img src="https://www.culturalmusings.com/logo.jpg" alt="AoS">
+    <div class="nav-logo-text">AESTHETICS OF SOCIETY<br><span style="font-size:10px;opacity:0.6">culturalmusings.com</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="https://natyashastra.culturalmusings.com">Natya Shastra</a></li>
+    <li><a href="https://bioresonancemusings.culturalmusings.com">Bio Resonance</a></li>
+    <li><a href="https://nada-chikitsa.culturalmusings.com">Nada Chikitsa</a></li>
+    <li><a href="https://spiritualphilosophical.culturalmusings.com">Spiritual</a></li>
+    <li><a href="https://masterconsciousprotocol.culturalmusings.com">MCP</a></li>
+    <li><a href="https://spandanashodha.culturalmusings.com">Spandana</a></li>
+    <li><a href="https://karanasrootmap.culturalmusings.com">108 Karanas</a></li>
+    <li><a href="raga-kavya.html" class="active">🎵 Raga &amp; Kavya</a></li>
+  </ul>
+</nav>
+
+<!-- ════════════════════ HERO ════════════════════ -->
+<section class="hero">
+  <span class="om">ॐ</span>
+  <h1>Raga &amp; <em>Kavya</em> Creator</h1>
+  <p>
+    Compose ragas, poetry, and kavyas across infinite combinations of Classical, Semi-classical,
+    Hindustani, Carnatic, Thumri, Bhajan, and Folklore traditions — rooted in the ancient science
+    of Nada Brahman and Natya Shastra.
+  </p>
+  <div class="hero-tags">
+    <span class="htag">CLASSICAL CARNATIC</span>
+    <span class="htag">HINDUSTANI</span>
+    <span class="htag">SEMI-CLASSICAL</span>
+    <span class="htag">THUMRI · DADRA</span>
+    <span class="htag">BHAJAN · KIRTAN</span>
+    <span class="htag">FOLKLORE</span>
+    <span class="htag">KAVYA · POETRY</span>
+  </div>
+</section>
+
+<!-- ════════════════════ CREATOR ════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Step 1 — Choose Genre</div>
+      <h2 class="section-title">Select Your Musical Tradition</h2>
+      <p class="section-desc">Each genre uses its own scale grammar, ornament system, and poetic form. Choose one, then build your raga below.</p>
+    </div>
+
+    <!-- GENRE TABS -->
+    <div class="genre-bar" id="genreBar">
+      <button class="genre-btn active" data-genre="carnatic">Carnatic Classical</button>
+      <button class="genre-btn" data-genre="hindustani">Hindustani Classical</button>
+      <button class="genre-btn" data-genre="semiclassical">Semi-Classical</button>
+      <button class="genre-btn" data-genre="thumri">Thumri · Dadra</button>
+      <button class="genre-btn" data-genre="bhajan">Bhajan · Kirtan</button>
+      <button class="genre-btn" data-genre="folk">Folklore · Folk</button>
+      <button class="genre-btn" data-genre="kavya">Kavya · Poetry</button>
+    </div>
+
+    <!-- CREATOR PANELS -->
+    <div id="genrePanel">
+      <!-- injected by JS -->
+    </div>
+
+    <!-- OUTPUT -->
+    <div class="output-section" id="outputSection">
+      <div class="output-header">
+        <div class="output-title" id="outRagaName">—</div>
+        <div class="output-genre-tag" id="outGenreTag">—</div>
+      </div>
+      <div class="output-body">
+        <div class="output-grid" id="outMeta"></div>
+        <div class="output-row">
+          <div class="out-label">Arohanam</div>
+          <div class="scale-display" id="outAroh">—</div>
+        </div>
+        <div class="output-row">
+          <div class="out-label">Avarohanam</div>
+          <div class="scale-display avaroh" id="outAvaroh">—</div>
+        </div>
+        <div class="output-row" id="outKavyaRow" style="display:none">
+          <div class="out-label">Kavya / Composition</div>
+          <div class="kavya-output" id="outKavya">—</div>
+        </div>
+        <div class="output-row">
+          <div class="out-label">Characteristics</div>
+          <div class="pill-row" id="outPills"></div>
+        </div>
+        <div class="output-row">
+          <div class="out-label">Reference Sources</div>
+          <div class="pill-row" id="outRefs"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════ REFERENCE DOMAINS ════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Reference Domains</div>
+      <h2 class="section-title">The Research Archive</h2>
+      <p class="section-desc">Each domain below is a dedicated research site. The Raga Creator draws from all of them simultaneously.</p>
+    </div>
+    <div class="ref-grid">
+      <div class="ref-card"><a href="https://natyashastra.culturalmusings.com" target="_blank"><div class="rt">Natya Shastra</div><div class="rd">Rasa · Bhava · Saptaswaras · Science of Sound</div><div class="rl">↗ natyashastra.culturalmusings.com</div></a></div>
+      <div class="ref-card"><a href="https://karanasrootmap.culturalmusings.com" target="_blank"><div class="rt">Karanas Root Map</div><div class="rd">108 Karanas × Shrutis × Melakarthas</div><div class="rl">↗ karanasrootmap.culturalmusings.com</div></a></div>
+      <div class="ref-card"><a href="https://bioresonancemusings.culturalmusings.com" target="_blank"><div class="rt">Bio-Resonance</div><div class="rd">Prana fields · Marma · Bio-acoustics</div><div class="rl">↗ bioresonancemusings.culturalmusings.com</div></a></div>
+      <div class="ref-card"><a href="https://spiritualphilosophical.culturalmusings.com" target="_blank"><div class="rt">Spiritual Philosophy</div><div class="rd">Advaita · Kashmir Shaivism · Samkhya</div><div class="rl">↗ spiritualphilosophical.culturalmusings.com</div></a></div>
+      <div class="ref-card"><a href="https://masterconsciousprotocol.culturalmusings.com" target="_blank"><div class="rt">Master Conscious Protocol</div><div class="rd">5-phase clinical healing framework</div><div class="rl">↗ masterconsciousprotocol.culturalmusings.com</div></a></div>
+      <div class="ref-card"><a href="https://spandanashodha.culturalmusings.com" target="_blank"><div class="rt">Spandana Shodha</div><div class="rd">Spanda Karikas · Vibration inquiry</div><div class="rl">↗ spandanashodha.culturalmusings.com</div></a></div>
+      <div class="ref-card"><a href="https://vedicmathematicsgeometry.culturalmusings.com" target="_blank"><div class="rt">Vedic Mathematics</div><div class="rd">72 Melakarthas · Shruti ratios · Sri Chakra</div><div class="rl">↗ vedicmathematicsgeometry.culturalmusings.com</div></a></div>
+      <div class="ref-card"><a href="https://natyashastraclassical-dance.culturalmusings.com" target="_blank"><div class="rt">Classical Dance Science</div><div class="rd">Karanas 55–81 · Kinematic Geometry</div><div class="rl">↗ natyashastraclassical-dance.culturalmusings.com</div></a></div>
+      <div class="ref-card"><a href="https://karanassacredsynthesis.culturalmusings.com" target="_blank"><div class="rt">Sacred Synthesis</div><div class="rd">Vedas · Sri Chakra · Lalitha Sahasranama</div><div class="rl">↗ karanassacredsynthesis.culturalmusings.com</div></a></div>
+      <div class="ref-card"><a href="https://completecelestialsynthesis.culturalmusings.com" target="_blank"><div class="rt">Celestial Synthesis</div><div class="rd">All 108 Karanas · 4 Vedas · 27 Nakshatras</div><div class="rl">↗ completecelestialsynthesis.culturalmusings.com</div></a></div>
+      <div class="ref-card"><a href="https://unifiedtheory.culturalmusings.com" target="_blank"><div class="rt">Unified Theory</div><div class="rd">21 unsolved problems × 108 Karanas</div><div class="rl">↗ unifiedtheory.culturalmusings.com</div></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ FOOTER ════════════════════ -->
+<footer>
+  <p>Aesthetics of Society · <a href="https://www.culturalmusings.com">culturalmusings.com</a> · Naredla Rama Chandra</p>
+  <p style="margin-top:6px;font-size:11px">Raga &amp; Kavya Creator — All 13 Research Domains Unified</p>
+</footer>
+
+<!-- ════════════════════ SCRIPT ════════════════════ -->
+<script>
+// ── DATA ──
+const SWARAS_ALL = ['Sa','Ri₁','Ri₂','Ga₁','Ga₂','Ma₁','Ma₂','Pa','Da₁','Da₂','Ni₁','Ni₂'];
+
+const GENRES = {
+  carnatic: {
+    label: 'Carnatic Classical',
+    ref: 'Natya Shastra · Vedic Math · Sacred Synthesis · Celestial Synthesis',
+    contexts: ['Raga (melodic framework)','Tala (rhythmic cycle)','Shruti (microtonal)','Melakartha parent','Janya derivation'],
+    contextLabel: 'Framework',
+    p1label: 'Melakartha Chakra',
+    p1: ['Chakra 1: Indu (1–6)','Chakra 2: Netra (7–12)','Chakra 3: Agni (13–18)','Chakra 4: Veda (19–24)','Chakra 5: Bana (25–30)','Chakra 6: Rutu (31–36)','Chakra 7: Rishi (37–42)','Chakra 8: Vasu (43–48)','Chakra 9: Brahma (49–54)','Chakra 10: Disi (55–60)','Chakra 11: Rudra (61–66)','Chakra 12: Aditya (67–72)'],
+    p2label: 'Scale type',
+    p2: ['Sampurna (7 notes)','Shadava (6 notes)','Audava (5 notes)','Vakra (zigzag)','Bhashanga (borrowed note)'],
+    p3label: 'Gamaka',
+    p3: ['Kampita','Andolan','Gamaka','Jaaru','Meend','Sphurita','Pratyaghata','Aahat'],
+    p4label: 'Rasa',
+    p4: ['Shringara (Love/Beauty)','Vira (Heroic)','Karuna (Compassion)','Shanta (Peace)','Adbhuta (Wonder)','Hasya (Joy)','Bhayanaka (Fear)','Raudra (Fury)','Bibhatsa (Disgust)'],
+    p5label: 'Tala',
+    p5: ['Adi Tala (8 beats)','Rupaka (3 beats)','Triputa (7 beats)','Mishra Chapu (7)','Khanda Chapu (5)','Jhampa (10)','Ata Tala (14)'],
+    times: ['Pratah (dawn 4–6 AM)','Sangava (6–9 AM)','Poorvahna (9 AM–noon)','Madhyahna (noon)','Aparahna (1–4 PM)','Sayahna (4–7 PM)','Pradosha (7–10 PM)','Nisha (10 PM–1 AM)','Nisheeta (1–4 AM)'],
+    ragas: ['Bhairavi','Todi','Saveri','Shanmukhapriya','Kalyani','Kharaharapriya','Shankarabharana','Natabhairavi','Charukesi','Kiravani','Hamsadhvani','Kambhoji','Mohanam','Malayamarutam','Bilahari','Hindolam','Suddha Saveri','Nattai','Begada','Sree'],
+    melakarta: ['Kanakangi (1)','Ratnangi (2)','Ganamurti (3)','Vanaspati (4)','Manavati (5)','Tanarupi (6)','Senavati (7)','Hanumatodi (8)','Dhenuka (9)','Natakapriya (10)','Kokilapriya (11)','Rupavati (12)','Gayakapriya (13)','Vakulabharanam (14)','Mayamalavagowla (15)','Chakravakam (16)','Suryakanta (17)','Hatakambari (18)','Jhankara dhvani (19)','Natabhairavi (20)','Kiranavali (21)','Kharaharapriya (22)','Gourimanohari (23)','Varunapriya (24)','Mararanjani (25)','Charukesi (26)','Sarasangi (27)','Harikambhoji (28)','Dheerashankarabharana (29)','Naganandini (30)','Yagapriya (31)','Ragavardhini (32)','Gangeyabhushani (33)','Vagadheesvari (34)','Shulini (35)','Chalanata (36)','Salagam (37)','Jalarnavam (38)','Jhalavarali (39)','Navaneetam (40)','Pavani (41)','Raghupriya (42)','Gavambodhi (43)','Bhavapriya (44)','Shubhapantuvarali (45)','Shadvidhamargini (46)','Suvarnangi (47)','Divyamani (48)','Dhavalambari (49)','Namanarayani (50)','Kamavardhini (51)','Ramapriya (52)','Gamanasrama (53)','Vishvambhari (54)','Syamalangi (55)','Shanmukhapriya (56)','Simhendramadhyama (57)','Hemavati (58)','Dharmavati (59)','Neetimati (60)','Kantamani (61)','Rishabhapriya (62)','Latangi (63)','Vachaspati (64)','Mechakalyani (65)','Chitrambari (66)','Sucharitra (67)','Jyotisvarupini (68)','Dhatuvardhani (69)','Nasikabhushani (70)','Kosalam (71)','Rasikapriya (72)']
+  },
+  hindustani: {
+    label: 'Hindustani Classical',
+    ref: 'Natya Shastra · Karanas Root Map · Bio-Resonance · Spandana Shodha',
+    contexts: ['Khayal','Dhrupad','Tappa','Tarana','Chautal composition'],
+    contextLabel: 'Form',
+    p1label: 'Thaat',
+    p1: ['Bhairav Thaat','Bhairavi Thaat','Kafi Thaat','Asavari Thaat','Bilawal Thaat','Kalyan Thaat','Khamaj Thaat','Marwa Thaat','Purvi Thaat','Todi Thaat'],
+    p2label: 'Scale type',
+    p2: ['Sampurna (7 notes)','Shadava (6 notes)','Audava (5 notes)','Vakra (zigzag)','Mishra (mixed)'],
+    p3label: 'Gamakas / Ornaments',
+    p3: ['Meend (glide)','Andolan (oscillation)','Gamak (rapid oscillation)','Murki (rapid grace)','Khatka (turn)','Sphurita','Kan (grace note)','Zamzama'],
+    p4label: 'Rasa',
+    p4: ['Shringara (Love)','Vira (Heroic)','Karuna (Compassion)','Shanta (Peace)','Adbhuta (Wonder)','Hasya (Joy)'],
+    p5label: 'Tala (Tal)',
+    p5: ['Teentaal (16 beats)','Ektaal (12 beats)','Jhaptaal (10 beats)','Rupak (7 beats)','Keherwa (8 beats)','Dadra (6 beats)','Chautal (12 beats)','Dhamar (14 beats)','Tilwada (16 beats)'],
+    times: ['Raga of Dawn (Pratah — 4–7 AM)','Raga of Morning (7–10 AM)','Raga of Midday (10 AM–1 PM)','Raga of Afternoon (1–4 PM)','Raga of Evening (4–7 PM)','Raga of Night (7–10 PM)','Raga of Late Night (10 PM–1 AM)','Raga of Midnight (1–4 AM)','All-time raga (Sarvakaleen)'],
+    ragas: ['Bhairav','Bhairavi','Todi','Multani','Yaman','Yaman Kalyan','Bihag','Darbari Kanada','Miya ki Todi','Miya ki Malhar','Puriya','Puriya Dhanashri','Marwa','Bhimpalasi','Kafi','Khamaj','Bageshri','Kedar','Bagesri','Jhinjhoti','Lalit','Shri','Hindol','Deepak','Megh','Vasant','Malkauns','Jog','Kirwani','Charukesi'],
+    melakarta: ['Bhairav Thaat','Bhairavi Thaat','Kafi Thaat','Asavari Thaat','Bilawal Thaat','Kalyan Thaat','Khamaj Thaat','Marwa Thaat','Purvi Thaat','Todi Thaat']
+  },
+  semiclassical: {
+    label: 'Semi-Classical',
+    ref: 'Natya Shastra · Spandana Shodha · Master Conscious Protocol',
+    contexts: ['Thumri-ang','Dadra-ang','Kajri','Chaiti','Hori','Sawani'],
+    contextLabel: 'Sub-genre',
+    p1label: 'Base Raga',
+    p1: ['Bhairavi','Kafi','Pahadi','Tilang','Pilu','Mishra Khamaj','Mishra Bhairavi','Mishra Yaman','Jhinjhoti'],
+    p2label: 'Language / Boli',
+    p2: ['Braj Bhasha','Awadhi','Maithili','Rajasthani','Punjabi','Telugu','Tamil','Kannada'],
+    p3label: 'Mood (Bhav)',
+    p3: ['Shringar (Love/Longing)','Bhakti (Devotion)','Virah (Separation)','Milan (Union)','Prakriti (Nature)','Utsav (Celebration)'],
+    p4label: 'Tala',
+    p4: ['Keherwa (8 beats)','Dadra (6 beats)','Deepchandi (14 beats)','Addha Teentaal','Sitarkhani (16 beats)'],
+    p5label: 'Setting',
+    p5: ['Monsoon (Sawan)','Spring (Basant)','Dawn','Dusk','Festival','Night of longing'],
+    times: ['Dawn','Morning','Afternoon','Dusk','Night','Festival time','Monsoon season'],
+    ragas: ['Bhairavi','Kafi','Pahadi','Tilang','Pilu','Mishra Khamaj','Mishra Bhairavi','Bhimpalasi','Jhinjhoti','Desh'],
+    melakarta: ['Bhairavi (Carnatic: Natabhairavi 20)','Kafi (Carnatic: Kharaharapriya 22)','Pahadi (Bilawal base)','Pilu (Kafi ang)','Tilang (Khamaj base)']
+  },
+  thumri: {
+    label: 'Thumri · Dadra',
+    ref: 'Natya Shastra · Spandana Shodha · Spiritual Philosophy',
+    contexts: ['Pure Thumri','Bol-baant Thumri','Bol-banav Thumri','Dadra','Hori Thumri'],
+    contextLabel: 'Thumri form',
+    p1label: 'Base Raga',
+    p1: ['Bhairavi','Kafi','Pahadi','Pilu','Jhinjhoti','Tilang','Khamaj','Mishra Shivranjani','Peelu','Des'],
+    p2label: 'Shringar Bhav',
+    p2: ['Virah (Longing)','Milan (Union)','Utsav (Joy)','Prakriti (Nature)','Bhakti (Devotion)','Sakhi (Beloved friend)'],
+    p3label: 'Tala',
+    p3: ['Deepchandi (14 beats)','Dadra (6 beats)','Keherwa (8 beats)','Addha (16 beats)','Sitarkhani'],
+    p4label: 'School (Gharana)',
+    p4: ['Benaras Gharana','Lucknow Gharana','Patiala Gharana','Punjab Gharana'],
+    p5label: 'Setting / Season',
+    p5: ['Holi (Colours)','Kajari (Monsoon)','Chaiti (Spring)','Sawan (Rains)','Diwali (Lights)','Vrindavan (Eternal)'],
+    times: ['Late evening','Night','Monsoon dusk','Spring morning','Festival time'],
+    ragas: ['Bhairavi','Kafi','Pahadi','Pilu','Jhinjhoti','Tilang','Khamaj','Des','Mishra Shivranjani'],
+    melakarta: ['Natabhairavi (20)','Kharaharapriya (22)','Bilawal base','Khamaj base']
+  },
+  bhajan: {
+    label: 'Bhajan · Kirtan',
+    ref: 'Sacred Synthesis · Spandana Shodha · Spiritual Philosophy · Master Conscious Protocol',
+    contexts: ['Bhajan (devotional)','Kirtan (call-response)','Stotram (verse praise)','Ashtapadhi','Namavali','Abhang'],
+    contextLabel: 'Devotional form',
+    p1label: 'Deity / Tradition',
+    p1: ['Vishnu / Krishna','Shiva / Rudra','Devi / Shakti','Rama','Hanuman','Ganesha','Subrahmanya','Saraswati','Lakshmi'],
+    p2label: 'Bhajan Raga',
+    p2: ['Bhairavi','Yaman','Bhairav','Kafi','Desh','Bhimpalasi','Bageshri','Charukesi','Darbari','Bhoopali'],
+    p3label: 'Language',
+    p3: ['Sanskrit','Hindi / Braj','Telugu','Tamil','Kannada','Marathi','Bengali','Gujarati','Odia'],
+    p4label: 'Tala',
+    p4: ['Keherwa (8 beats)','Ektaal (12 beats)','Jhaptaal (10 beats)','Dadra (6 beats)','Free metre (Anibaddha)'],
+    p5label: 'Mood / Bhav',
+    p5: ['Bhakti (Pure devotion)','Vairagya (Detachment)','Shanta (Peace)','Utsav (Celebration)','Viraha (Longing for divine)','Surrender (Sharanagati)'],
+    times: ['Brahma muhurta (pre-dawn)','Morning puja','Noon','Evening aarti','Night kirtan'],
+    ragas: ['Bhairavi','Bhairav','Kafi','Desh','Yaman','Bhimpalasi','Bageshri','Darbari','Charukesi','Bhoopali'],
+    melakarta: ['Natabhairavi (20)','Mayamalavagowla (15)','Kharaharapriya (22)','Harikambhoji (28)','Dheerashankarabharana (29)']
+  },
+  folk: {
+    label: 'Folklore · Folk',
+    ref: 'Natya Shastra · Bio-Resonance · Spandana Shodha',
+    contexts: ['Lavani (Maharashtra)','Baul (Bengal)','Pandavani (Chhattisgarh)','Pahari (Himachal)','Maand (Rajasthan)','Sohar (UP)','Jaanapada (Andhra/Telangana)','Villanchi (Tamil Nadu)','Yakshagana (Karnataka)','Bhavai (Gujarat)'],
+    contextLabel: 'Folk tradition',
+    p1label: 'Region',
+    p1: ['Andhra Pradesh / Telangana','Tamil Nadu','Karnataka','Kerala','Maharashtra','Rajasthan','Punjab / Haryana','UP / Bihar','Bengal / Odisha','Himachal / J&K'],
+    p2label: 'Scale / Mode',
+    p2: ['Pentatonic (5 notes)','Hexatonic (6 notes)','Full heptatonic','Modal (Grama)','Drone-based (Sa-Pa)'],
+    p3label: 'Instrument Basis',
+    p3: ['Tambura / Tanpura drone','Dholak percussion','Harmonium melody','Sarangi ornament','Veena / Sitar','Bansuri (flute)','Shehnai','None / Voice only'],
+    p4label: 'Occasion',
+    p4: ['Harvest festival','Wedding celebration','Monsoon arrival','Birth ceremony','Worship / Ritual','Storytelling / Epic'],
+    p5label: 'Mood',
+    p5: ['Joyful / Celebratory','Devotional','Narrative / Epic','Romantic','Melancholic / Longing','Heroic / Warrior'],
+    times: ['Dawn ritual','Morning work songs','Midday rest','Evening gathering','Night celebration','Wedding all-night'],
+    ragas: ['Maand','Maru Bihag','Pahadi','Bhairavi','Pilu','Khamaj','Sorath','Sindhura','Tilang'],
+    melakarta: ['Regional modes (non-melakartha)','Pentatonic folk scale','Bilawal-based','Bhairavi-based','Kafi-based']
+  },
+  kavya: {
+    label: 'Kavya · Poetry',
+    ref: 'Natya Shastra · Sacred Synthesis · Spiritual Philosophy · Unified Theory',
+    contexts: ['Sanskrit Shloka (anushtubh)','Sanskrit Shloka (mandakranta)','Doha (couplet)','Chaupai (quatrain)','Ghazal','Haiku-inspired','Free verse Kavya','Ashtapadhi','Stotram verse','Telugu Padyam'],
+    contextLabel: 'Poetic form',
+    p1label: 'Theme',
+    p1: ['Nada Brahman (sound as reality)','108 Karanas as cosmic dance','Raga as consciousness','Nature / Prakriti','Divine love / Bhakti','Time / Kala','Dissolution / Laya','Creation / Srishti','Liberation / Moksha'],
+    p2label: 'Language',
+    p2: ['Sanskrit','Telugu','Hindi / Braj Bhasha','Tamil','Kannada','English (translation style)','Bilingual Sanskrit-English'],
+    p3label: 'Metre / Chandas',
+    p3: ['Anushtubh (8×4)','Mandakranta','Vasantatilaka','Indravajra','Sragdhara','Shardula Vikridita','Free (Gadya-Padya mix)'],
+    p4label: 'Rasa',
+    p4: ['Shringara','Vira','Karuna','Shanta','Adbhuta','Hasya','Bhayanaka','Raudra'],
+    p5label: 'Reference Karana',
+    p5: ['K1 Talapushpaputa (opening / offering)','K27 (earth quarter close)','K54 (water quarter close)','K81 (air quarter close)','K108 (completion / dissolution)','K55–K81 (classical dance arc)','K82–K108 (fire quarter / Vedic math)'],
+    times: ['Brahma muhurta (composition time)','Morning','Noon','Evening','Night','Midnight contemplation'],
+    ragas: ['Bhairav','Shri','Puriya','Bhairavi','Todi','Malkauns','Hindol','Yaman'],
+    melakarta: ['Mayamalavagowla (15)','Kalyani (65)','Natabhairavi (20)','Hanumatodi (8)','Kharaharapriya (22)']
+  }
+};
+
+const VADI = ['Sa','Ri₁','Ri₂','Ga₁','Ga₂','Ma₁','Ma₂','Pa','Da₁','Da₂','Ni₁','Ni₂'];
+
+// KAVYA TEMPLATES per form
+const KAVYA_TEMPLATES = {
+  'Sanskrit Shloka (anushtubh)': (raga, theme, rasa) => `नादब्रह्म परं सत्यं, राग${raga.replace(/[^a-zA-Z]/g,'')} तत्त्वमुच्यते ।
+भवबन्धविमुक्त्यर्थं, सप्तस्वर-महेश्वरः ॥
+
+— Nāda Brahman is the supreme truth; Raga is that essence proclaimed.
+  For liberation from worldly bonds, the seven swaras are the Great Lord. —`,
+  'Doha (couplet)': (raga, theme, rasa) => `राग ${raga} की छाया में, जागे मन के तार ।
+सात सुरों की बाँसुरी, खोले मोक्ष-द्वार ॥
+
+In the shadow of Raga ${raga}, the strings of the mind awaken.
+The flute of the seven swaras opens the door to liberation.`,
+  'Ghazal': (raga, theme, rasa) => `तेरे ${raga} की तरंगों में मैं खो गया, साकी ।
+नाद-ब्रह्म की लहरों में मैं बह चला, साकी ।
+
+सात सुरों की माला जपता है यह मन,
+शिव के तांडव में लय हुआ जो मेरा मन, साकी ।
+
+— In the waves of your ${raga}, I am lost, O beloved.
+  In the currents of Nada Brahman, I flow, O beloved. —`,
+  'Telugu Padyam': (raga, theme, rasa) => `రాగ ${raga} స్వరమాలికలో
+నాద బ్రహ్మము తేలియాడె ।
+సప్తస్వర తరంగములు
+చిత్తమును ముంచెత్తె ॥
+
+— In the garland of notes of Raga ${raga},
+  Nada Brahman floats and soars.
+  The waves of the seven swaras
+  Submerge and fill the mind. —`,
+  'Free verse Kavya': (raga, theme, rasa) => `The ancient sage sat in silence —
+and from silence arose ${raga}.
+
+Not composed. Not constructed.
+Only remembered —
+the way the body remembers
+what the mind has forgotten.
+
+Each swara, a karana of sound.
+Each karana, a swara of the body.
+The same mathematics.
+The same cosmos.
+The same dissolution.
+
+Sing. And disappear.`,
+  'Haiku-inspired': (raga, theme, rasa) => `Dawn raga rises —
+Sa holds the earth's first breathing,
+Ni releases all.
+
+108 postures,
+one body remembers all —
+${raga} knows this too.`,
+  'Ashtapadhi': (raga, theme, rasa) => `प्रथम पाद: नाद-जन्म
+नादात् सृष्टिः, नादे स्थितिः, नादे च प्रलयः स्मृतः ।
+राग ${raga} महाविद्या, चिद्घन-प्रकाश-विग्रहः ॥
+
+द्वितीय पाद: स्वर-देवता
+सा-रि-ग-म-प-द-नि सप्त, सप्तलोक-प्रतिष्ठिताः ।
+शरीरे सप्त-चक्राणि, स्वर-शक्ति-समन्विताः ॥`
+};
+
+// STATE
+let state = { aroh: [], avaroh: [], genre: 'carnatic' };
+
+// ── BUILD GENRE PANEL ──
+function buildPanel(genre) {
+  const g = GENRES[genre];
+  return `
+<div class="creator-grid">
+  <!-- LEFT: Swara selector -->
+  <div>
+    <div class="creator-card" style="margin-bottom:1.5rem">
+      <div class="card-title"><span>↑</span> Arohanam — Ascending scale</div>
+      <div class="swara-section">
+        <div class="swara-label">Select swaras in ascending order</div>
+        <div class="swara-grid" id="arohBtns">
+          ${SWARAS_ALL.map(s=>`<button class="sw" onclick="toggleSw('aroh','${s}')">${s}</button>`).join('')}
+        </div>
+        <div class="swara-label">Selected:</div>
+        <div class="seq-display" id="arohDisplay"><span class="seq-hint">click swaras above...</span></div>
+      </div>
+    </div>
+    <div class="creator-card">
+      <div class="card-title"><span>↓</span> Avarohanam — Descending scale</div>
+      <div class="swara-section">
+        <div class="swara-label">Select swaras in descending order</div>
+        <div class="swara-grid" id="avarohBtns">
+          ${SWARAS_ALL.map(s=>`<button class="sw" onclick="toggleSw('avaroh','${s}')">${s}</button>`).join('')}
+        </div>
+        <div class="swara-label">Selected:</div>
+        <div class="seq-display" id="avarohDisplay"><span class="seq-hint">click swaras above...</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: Parameters -->
+  <div>
+    <div class="creator-card" style="margin-bottom:1.5rem">
+      <div class="card-title"><span>⚙</span> Raga Parameters</div>
+      <label>${g.contextLabel}</label>
+      <select id="pCtx">${g.contexts.map(c=>`<option>${c}</option>`).join('')}</select>
+      <label>${g.p1label}</label>
+      <select id="p1">${g.p1.map(o=>`<option>${o}</option>`).join('')}</select>
+      <label>${g.p2label}</label>
+      <select id="p2">${g.p2.map(o=>`<option>${o}</option>`).join('')}</select>
+      <label>${g.p3label}</label>
+      <select id="p3">${g.p3.map(o=>`<option>${o}</option>`).join('')}</select>
+      <label>${g.p4label}</label>
+      <select id="p4">${g.p4.map(o=>`<option>${o}</option>`).join('')}</select>
+      <label>${g.p5label}</label>
+      <select id="p5">${g.p5.map(o=>`<option>${o}</option>`).join('')}</select>
+      <label>Vadi (dominant swara)</label>
+      <select id="pVadi">${VADI.map(v=>`<option>${v}</option>`).join('')}</select>
+      <label>Performance time</label>
+      <select id="pTime">${g.times.map(t=>`<option>${t}</option>`).join('')}</select>
+    </div>
+    <div class="creator-card">
+      <div class="card-title"><span>✦</span> Raga / Kavya Name</div>
+      <label>Name (or leave blank for auto-suggestion)</label>
+      <input type="text" id="ragaNameIn" placeholder="e.g. Nada Kalyani, Brahma Bhairavi...">
+      ${genre==='kavya'?`
+      <label>Poetic form</label>
+      <select id="kavyaFormSel">${GENRES.kavya.contexts.map(c=>`<option>${c}</option>`).join('')}</select>
+      `:''}
+      <div class="btn-row">
+        <button class="btn-gold" onclick="generate()">✦ Generate</button>
+        <button class="btn-clear" onclick="clearAll()">Clear</button>
+      </div>
+    </div>
+  </div>
+</div>`;
+}
+
+// ── SWARA TOGGLE ──
+function toggleSw(type, sw) {
+  const arr = state[type];
+  const idx = arr.indexOf(sw);
+  if(idx === -1) arr.push(sw); else arr.splice(idx, 1);
+  renderSwBtns(type);
+  renderSeqDisplay(type);
+}
+
+function renderSwBtns(type) {
+  const arr = state[type];
+  document.querySelectorAll(`#${type}Btns .sw`).forEach(b => {
+    b.classList.toggle('on', arr.includes(b.textContent));
+    b.classList.toggle(type, arr.includes(b.textContent));
+  });
+}
+
+function renderSeqDisplay(type) {
+  const arr = state[type];
+  const div = document.getElementById(`${type}Display`);
+  if(!div) return;
+  if(!arr.length) { div.innerHTML = `<span class="seq-hint">click swaras above...</span>`; return; }
+  div.innerHTML = arr.map(s => `<span class="seq-pill ${type}">${s}</span>`).join('<span style="color:var(--muted);margin:0 2px">—</span>');
+}
+
+// ── GENRE SWITCH ──
+function switchGenre(genre) {
+  state.genre = genre;
+  state.aroh = [];
+  state.avaroh = [];
+  document.querySelectorAll('.genre-btn').forEach(b => b.classList.toggle('active', b.dataset.genre === genre));
+  document.getElementById('genrePanel').innerHTML = buildPanel(genre);
+  document.getElementById('outputSection').classList.remove('show');
+}
+
+// ── AUTO SUGGEST RAGA NAME ──
+function suggestName(genre, aroh, p1, p4) {
+  const g = GENRES[genre];
+  const prefix = ['Nada','Brahma','Shiva','Devi','Soma','Chandra','Surya','Agni','Veda','Spanda'][Math.floor(Math.random()*10)];
+  if(aroh.includes('Ma₂')) return g.ragas.find(r=>r.toLowerCase().includes('kalyani')||r.toLowerCase().includes('yaman')) || g.ragas[0];
+  if(aroh.includes('Ga₁')&&aroh.includes('Ni₁')) return g.ragas.find(r=>r.toLowerCase().includes('bhairavi')||r.toLowerCase().includes('todi')) || g.ragas[1];
+  if(aroh.length<=5) return `${prefix} ${g.ragas[Math.floor(Math.random()*Math.min(5,g.ragas.length))]}`;
+  return g.ragas[Math.floor(Math.random()*g.ragas.length)];
+}
+
+// ── GENERATE ──
+function generate() {
+  const genre = state.genre;
+  const g = GENRES[genre];
+  const aroh = state.aroh;
+  const avaroh = state.avaroh;
+
+  const ctx  = document.getElementById('pCtx')?.value || g.contexts[0];
+  const p1   = document.getElementById('p1')?.value || g.p1[0];
+  const p2   = document.getElementById('p2')?.value || g.p2[0];
+  const p3   = document.getElementById('p3')?.value || g.p3[0];
+  const p4   = document.getElementById('p4')?.value || g.p4[0];
+  const p5   = document.getElementById('p5')?.value || g.p5[0];
+  const vadi = document.getElementById('pVadi')?.value || 'Sa';
+  const time = document.getElementById('pTime')?.value || g.times[0];
+  const nameIn = (document.getElementById('ragaNameIn')?.value||'').trim();
+  const kavyaForm = document.getElementById('kavyaFormSel')?.value || '';
+
+  const samvadi = VADI[(VADI.indexOf(vadi)+4)%VADI.length] || 'Pa';
+  const arohDisp = aroh.length ? aroh.join(' — ') : 'Sa — Re — Ga — Ma — Pa — Da — Ni — Sa';
+  const avarohDisp = avaroh.length ? avaroh.join(' — ') : (aroh.length?[...aroh].reverse().join(' — '):'Sa — Ni — Da — Pa — Ma — Ga — Re — Sa');
+  const count = aroh.length || 7;
+  const structure = count<=5?'Audava (5 notes)':count===6?'Shadava (6 notes)':'Sampurna (7 notes)';
+  const ragaName = nameIn || suggestName(genre, aroh, p1, p4);
+  const melRef = g.melakarta[Math.floor(Math.random()*g.melakarta.length)];
+
+  // OUTPUT
+  document.getElementById('outRagaName').textContent = ragaName;
+  document.getElementById('outGenreTag').textContent = g.label.toUpperCase();
+
+  document.getElementById('outMeta').innerHTML = `
+    <div class="meta-block"><div class="mk">Genre</div><div class="mv">${g.label}</div></div>
+    <div class="meta-block"><div class="mk">${g.p1label}</div><div class="mv">${p1}</div></div>
+    <div class="meta-block"><div class="mk">Structure</div><div class="mv">${structure}</div></div>
+    <div class="meta-block"><div class="mk">Vadi / Samvadi</div><div class="mv">${vadi} / ${samvadi}</div></div>
+    <div class="meta-block"><div class="mk">Performance time</div><div class="mv">${time}</div></div>
+    <div class="meta-block"><div class="mk">Rasa</div><div class="mv">${p4}</div></div>
+    <div class="meta-block"><div class="mk">Ornament</div><div class="mv">${p3}</div></div>
+    <div class="meta-block"><div class="mk">Melakartha / Parent</div><div class="mv">${melRef}</div></div>
+  `;
+
+  document.getElementById('outAroh').textContent = arohDisp;
+  document.getElementById('outAvaroh').textContent = avarohDisp;
+
+  // KAVYA OUTPUT
+  const kavyaRow = document.getElementById('outKavyaRow');
+  const kavyaOut = document.getElementById('outKavya');
+  if(genre === 'kavya' && kavyaForm && KAVYA_TEMPLATES[kavyaForm]) {
+    kavyaRow.style.display = 'block';
+    kavyaOut.textContent = KAVYA_TEMPLATES[kavyaForm](ragaName, p1, p4);
+  } else {
+    kavyaRow.style.display = 'none';
+  }
+
+  document.getElementById('outPills').innerHTML = [
+    `<span class="info-pill p-gold">${ctx}</span>`,
+    `<span class="info-pill p-teal">${p3}</span>`,
+    `<span class="info-pill p-gold">${p5}</span>`,
+    `<span class="info-pill p-purple">Vadi: ${vadi}</span>`,
+    `<span class="info-pill p-muted">${structure}</span>`,
+    `<span class="info-pill p-muted">${p2}</span>`,
+  ].join('');
+
+  document.getElementById('outRefs').innerHTML = g.ref.split('·').map(r=>
+    `<span class="info-pill p-muted">${r.trim()}</span>`
+  ).join('');
+
+  const out = document.getElementById('outputSection');
+  out.classList.add('show');
+  out.scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+// ── CLEAR ──
+function clearAll() {
+  state.aroh = [];
+  state.avaroh = [];
+  ['aroh','avaroh'].forEach(type => {
+    renderSwBtns(type);
+    renderSeqDisplay(type);
+  });
+  if(document.getElementById('ragaNameIn')) document.getElementById('ragaNameIn').value = '';
+  document.getElementById('outputSection').classList.remove('show');
+}
+
+// ── INIT ──
+document.getElementById('genreBar').addEventListener('click', e => {
+  if(e.target.dataset.genre) switchGenre(e.target.dataset.genre);
+});
+
+// Build initial panel
+document.getElementById('genrePanel').innerHTML = buildPanel('carnatic');
+</script>
+</body>
+</html>
